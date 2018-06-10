@@ -13,7 +13,7 @@ export TF_VAR_service_account_key=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
-terraform init # pks-install-pipeline/ci/deploy-opsman/terraform
+terraform init pks-install-pipeline/ci/deploy-opsman/terraform
 
 terraform plan \
   -var "region=${GCP_REGION}" \
@@ -26,8 +26,8 @@ terraform plan \
   -var "domain=${GCP_DOMAIN}" \
   -var "zone_name=${GCP_ZONE_NAME}" \
   -out terraform.tfplan \
-  -state terraform-state/terraform.tfstate # \
-  # pks-install-pipeline/ci/deploy-opsman/terraform
+  -state terraform-state/terraform.tfstate \
+  pks-install-pipeline/ci/deploy-opsman/terraform
 
 # -var "service_account_key=${GCP_SERVICE_ACCOUNT_KEY}" \
 
