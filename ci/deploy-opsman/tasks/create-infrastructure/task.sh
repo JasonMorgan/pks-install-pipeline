@@ -9,15 +9,10 @@ pcf_opsman_bucket_path=$(grep -i 'us:.*.tar.gz' pivnet-opsmgr/*GCP.yml | cut -d'
 # ops-manager-us/pcf-gcp-1.9.2.tar.gz -> opsman-pcf-gcp-1-9-2
 pcf_opsman_image_name=$(echo $pcf_opsman_bucket_path | sed 's%.*/\(.*\).tar.gz%opsman-\1%' | sed 's/\./-/g')
 
-# debug
-ls pks-install-pipeline/ci/deploy-opsman
-ls pks-install-pipeline/ci/deploy-opsman/terraform
-
 export TF_VAR_service_account_key=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
-pushd pks-install-pipeline/ci/deploy-opsman/terraform
 terraform init # pks-install-pipeline/ci/deploy-opsman/terraform
 
 terraform plan \
@@ -29,7 +24,7 @@ terraform plan \
   -var "nat_machine_type=n1-standard-4" \
   -var "opsman_machine_type=n1-standard-2" \
   -var "domain=${GCP_DOMAIN}" \
-  -var "zone_name=${GCP_ZONE_NAME}"
+  -var "zone_name=${GCP_ZONE_NAME}" \
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate # \
   # pks-install-pipeline/ci/deploy-opsman/terraform
@@ -40,8 +35,6 @@ terraform apply \
   -state-out $root/create-infrastructure-output/terraform.tfstate \
   -parallelism=5 \
   terraform.tfplan
-
-popd
 
 cd $root/create-infrastructure-output
   output_json=$(terraform output -json -state=terraform.tfstate)
