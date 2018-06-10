@@ -1,0 +1,26 @@
+######## PCF Foundation-specific parameters
+
+# The IaaS name for which stemcell to download. This must match the IaaS name
+# within the stemcell to download, e.g. "vsphere", "aws", "azure", "google" must be lowercase.
+iaas_type: google
+
+# Ops Manager information and admin credentials
+opsman_domain: opsmgr.gcp.59s.io
+opsman_admin_username: admin      # Username for Ops Manager admin account
+opsman_admin_password: ((opsman))       # Password for Ops Manager admin account
+# Either opsman_client_id/opsman_client_secret or opsman_admin_username/opsman_admin_password needs to be specified.
+# If you are using opsman_admin_username/opsman_admin_password, edit opsman_client_id/opsman_client_secret to be an empty value.
+# If you are using opsman_client_id/opsman_client_secret, edit opsman_admin_username/opsman_admin_password to be an empty value.
+opsman_client_id:
+opsman_client_secret:
+
+az_1_name: us-east-1d
+az_2_name: us-east-1b
+az_3_name: us-east-1c
+services_network_name: pks-infrastructure
+dynamic_services_network_name: pks-services
+bosh_vm_folder: pks-vms  # The name should be the same as the VM Folder in the Ops Manager Director tile, under the vCenter config page.
+
+# pcf-pipelines legacy parameters - only used for when no_proxy option is used
+company_proxy_domain:
+opsman_ip_address:
