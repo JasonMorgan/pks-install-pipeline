@@ -14,9 +14,9 @@ opsman_admin_password: ((opsman))       # Password for Ops Manager admin account
 opsman_client_id:
 opsman_client_secret:
 
-az_1_name: us-east-1d
-az_2_name: us-east-1b
-az_3_name: us-east-1c
+az_1_name: us-east1-d
+az_2_name: us-east1-b
+az_3_name: us-east1-c
 services_network_name: pks-infrastructure
 dynamic_services_network_name: pks-services
 bosh_vm_folder: pks-vms  # The name should be the same as the VM Folder in the Ops Manager Director tile, under the vCenter config page.
