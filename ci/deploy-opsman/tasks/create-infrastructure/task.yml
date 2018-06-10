@@ -28,4 +28,5 @@ params:
   GCP_DOMAIN: 
 
 run:
-  path: pks-install-pipeline/ci/deploy-opsman/tasks/create-infrastructure/task.sh
+  path: /bin/bash
+  args: ["pks-install-pipeline/ci/deploy-opsman/tasks/create-infrastructure/task.sh"]
