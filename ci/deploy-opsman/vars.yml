@@ -57,3 +57,8 @@ opsman_major_minor_version: ^2\.1\.[0-9]+$ # Ops Manager minor version to track 
 opsman_trusted_certs: |
 
 terraform_statefile_bucket: jason-pcf-pipelines-terraform-state-bucket
+
+# 
+
+gcp_zone_name: gcp-59s-io
+gpc_domain: gcp.59s.io

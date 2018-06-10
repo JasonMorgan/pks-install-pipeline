@@ -55,3 +55,10 @@ variable "pks_lb_count" {
   default = 1
 }
 
+variable "zone_name" {
+  type    = "string"
+}
+
+variable "domain" {
+  type    = "string"
+}

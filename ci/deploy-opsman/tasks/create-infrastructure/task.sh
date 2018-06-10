@@ -20,6 +20,12 @@ terraform plan \
   -var "zones=[${GCP_ZONE_1}, ${GCP_ZONE_2}, ${GCP_ZONE_3}]" \
   -var "env_prefix=${GCP_RESOURCE_PREFIX}" \
   -var "pcf_opsman_image_name=${pcf_opsman_image_name}" \
+  -var "project=${GCP_PROJECT_ID}" \
+  -var "service_account_key=${GCP_SERVICE_ACCOUNT_KEY}" \
+  -var "nat_machine_type=n1-standard-4" \
+  -var "opsman_machine_type=n1-standard-2" \
+  -var "domain=${GCP_DOMAIN}" \
+  -var "zone_name=${GCP_ZONE_NAME}"
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate \
   pcf-pipelines/install-pcf/gcp/terraform
@@ -31,19 +37,7 @@ terraform apply \
 
 cd $root/create-infrastructure-output
   output_json=$(terraform output -json -state=terraform.tfstate)
-  pub_ip_global_pcf=$(echo $output_json | jq --raw-output '.pub_ip_global_pcf.value')
-  pub_ip_ssh_and_doppler=$(echo $output_json | jq --raw-output '.pub_ip_ssh_and_doppler.value')
-  pub_ip_ssh_tcp_lb=$(echo $output_json | jq --raw-output '.pub_ip_ssh_tcp_lb.value')
-  pub_ip_opsman=$(echo $output_json | jq --raw-output '.pub_ip_opsman.value')
+  output=$(echo $output_json | jq)
 cd -
 
-echo "Please configure DNS as follows:"
-echo "----------------------------------------------------------------------------------------------"
-echo "*.${SYSTEM_DOMAIN} == ${pub_ip_global_pcf}"
-echo "*.${APPS_DOMAIN} == ${pub_ip_global_pcf}"
-echo "ssh.${SYSTEM_DOMAIN} == ${pub_ip_ssh_and_doppler}"
-echo "doppler.${SYSTEM_DOMAIN} == ${pub_ip_ssh_and_doppler}"
-echo "loggregator.${SYSTEM_DOMAIN} == ${pub_ip_ssh_and_doppler}"
-echo "tcp.${PCF_ERT_DOMAIN} == ${pub_ip_ssh_tcp_lb}"
-echo "opsman.${PCF_ERT_DOMAIN} == ${pub_ip_opsman}"
-echo "----------------------------------------------------------------------------------------------"
+echo "$output"
