@@ -17,7 +17,7 @@ terraform init pks-install-pipeline/ci/deploy-opsman/terraform
 
 terraform plan \
   -var "region=${GCP_REGION}" \
-  -var "zones=[${GCP_ZONE_1}, ${GCP_ZONE_2}, ${GCP_ZONE_3}]" \
+  -var "zones=[\"${GCP_ZONE_1}\", \"${GCP_ZONE_2}\", \"${GCP_ZONE_3}\"]" \
   -var "env_prefix=${GCP_RESOURCE_PREFIX}" \
   -var "pcf_opsman_image_name=${pcf_opsman_image_name}" \
   -var "project=${GCP_PROJECT_ID}" \
