@@ -5,5 +5,5 @@ resource "google_dns_record_set" "ops-manager-dns" {
 
   managed_zone = "${var.zone_name}"
 
-  rrdatas = ["${google_compute_address.opsman.address}"]
+  rrdatas = ["${google_compute_address.ops-manager.address}"]
 }

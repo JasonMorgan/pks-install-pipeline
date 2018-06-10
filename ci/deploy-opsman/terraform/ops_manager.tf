@@ -4,7 +4,7 @@ resource "google_compute_image" "ops-manager-image" {
     create = "20m"
   }
   raw_disk {
-    source = "${var.opsman_image_name}"
+    source = "${var.pcf_opsman_image_name}"
   }
 }
 
