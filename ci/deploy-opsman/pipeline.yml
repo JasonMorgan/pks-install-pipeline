@@ -19,6 +19,13 @@ resources:
     uri: git@github.com:pivotal-cf/pcf-pipelines.git
     branch: master
     private_key: {{git_private_key}}
+  
+- name: pks-install-pipeline
+  type: git
+  source:
+    uri: https://github.com/JasonMorgan/pks-install-pipeline.git
+    branch: master
+    private_key: {{git_private_key}}
 
 - name: terraform-state
   type: gcs
@@ -101,6 +108,7 @@ jobs:
   - aggregate:
     - get: terraform-state
     - get: pcf-pipelines
+    - get: pks-install-pipeline
     - get: pivnet-opsmgr
       passed: [upload-opsman-image]
       params:

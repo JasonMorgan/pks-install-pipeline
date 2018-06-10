@@ -1,31 +1,25 @@
-resource "google_compute_network" "pcf-virt-net" {
-  name = "${var.prefix}-virt-net"
+resource "google_compute_network" "pks-network" {
+  name = "${var.env_prefix}-virt-net"
+  auto_create_subnetworks = false
 }
 
-// Ops Manager & Jumpbox
-resource "google_compute_subnetwork" "subnet-ops-manager" {
-  name          = "${var.prefix}-subnet-infrastructure-${var.gcp_region}"
-  ip_cidr_range = "192.168.101.0/26"
-  network       = "${google_compute_network.pcf-virt-net.self_link}"
+resource "google_compute_subnetwork" "infrastructure-subnet" {
+  name          = "${var.env_prefix}-subnet-infrastructure-${var.region}"
+  ip_cidr_range = "${var.infrastructure_cidr}"
+  network       = "${google_compute_network.pks-network.self_link}"
+  region        = "${var.region}"
 }
 
-// ERT
-resource "google_compute_subnetwork" "subnet-ert" {
-  name          = "${var.prefix}-subnet-ert-${var.gcp_region}"
-  ip_cidr_range = "192.168.16.0/22"
-  network       = "${google_compute_network.pcf-virt-net.self_link}"
+resource "google_compute_subnetwork" "pks-subnet" {
+  name          = "${var.env_prefix}-subnet-pks-${var.region}"
+  ip_cidr_range = "${var.pks_cidr}"
+  network       = "${google_compute_network.pks-network.self_link}"
+  region        = "${var.region}"
 }
 
-// Services Tile
-resource "google_compute_subnetwork" "subnet-services-1" {
-  name          = "${var.prefix}-subnet-services-1-${var.gcp_region}"
-  ip_cidr_range = "192.168.20.0/22"
-  network       = "${google_compute_network.pcf-virt-net.self_link}"
-}
-
-// Dynamic Services Tile
-resource "google_compute_subnetwork" "subnet-dynamic-services-1" {
-  name          = "${var.prefix}-subnet-dynamic-services-1-${var.gcp_region}"
-  ip_cidr_range = "192.168.24.0/22"
-  network       = "${google_compute_network.pcf-virt-net.self_link}"
+resource "google_compute_subnetwork" "services-subnet" {
+  name          = "${var.env_prefix}-subnet-services-${var.region}"
+  ip_cidr_range = "${var.services_cidr}"
+  network       = "${google_compute_network.pks-network.self_link}"
+  region        = "${var.region}"
 }

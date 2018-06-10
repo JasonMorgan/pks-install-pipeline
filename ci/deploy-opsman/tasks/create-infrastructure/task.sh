@@ -25,7 +25,7 @@ export GOOGLE_CREDENTIALS=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
-terraform init pcf-pipelines/install-pcf/gcp/terraform
+terraform init pks-install-pipeline/ci/deploy-opsman/terraform
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \

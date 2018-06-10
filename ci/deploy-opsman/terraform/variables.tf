@@ -1,53 +1,57 @@
-variable "prefix" {}
-
-variable "gcp_proj_id" {}
-
-variable "gcp_region" {}
-
-variable "gcp_zone_1" {}
-
-variable "gcp_zone_2" {}
-
-variable "gcp_zone_3" {}
-
-variable "gcp_storage_bucket_location" {}
-
-variable "pcf_opsman_image_name" {}
-
-variable "pcf_ert_domain" {}
-variable "system_domain" {}
-variable "apps_domain" {}
-
-variable "pcf_ert_ssl_cert" {}
-
-variable "pcf_ert_ssl_key" {}
-
-variable "db_diego_username" {}
-variable "db_diego_password" {}
-variable "db_notifications_username" {}
-variable "db_notifications_password" {}
-variable "db_autoscale_username" {}
-variable "db_autoscale_password" {}
-variable "db_uaa_username" {}
-variable "db_uaa_password" {}
-variable "db_app_usage_service_username" {}
-variable "db_app_usage_service_password" {}
-variable "db_ccdb_username" {}
-variable "db_ccdb_password" {}
-variable "db_routing_username" {}
-variable "db_routing_password" {}
-variable "db_accountdb_username" {}
-variable "db_accountdb_password" {}
-variable "db_networkpolicyserverdb_username" {}
-variable "db_networkpolicyserverdb_password" {}
-variable "db_nfsvolumedb_username" {}
-variable "db_nfsvolumedb_password" {}
-variable "db_locket_username" {}
-variable "db_locket_password" {}
-variable "db_silk_username" {}
-variable "db_silk_password" {}
-
-variable "db_cloudsqldb_tier" {
-  type    = "string"
-  default = "db-f1-micro"
+variable "project" {
+  type = "string"
 }
+
+variable "region" {
+  type = "string"
+}
+
+variable "zones" {
+  type = "list"
+}
+
+variable "nat_machine_type" {
+  default = "n1-standard-4"
+  type = "string"
+}
+
+variable "opsman_machine_type" {
+  default = "n1-standard-2"
+  type = "string"
+}
+
+variable "service_account_key" {
+  type = "string"
+}
+
+variable "env_prefix" {
+  type = "string"
+}
+
+variable "infrastructure_cidr" {
+  type        = "string"
+  description = "cidr for infrastructure subnet"
+  default     = "192.168.101.0/26"
+}
+
+variable "pks_cidr" {
+  type        = "string"
+  description = "cidr for pks subnet"
+  default     = "192.168.16.0/26"
+}
+
+variable "services_cidr" {
+  type        = "string"
+  description = "cidr for services subnet"
+  default     = "192.168.20.0/22"
+}
+
+variable "opsman_image_url" {
+  type = "string"
+}
+
+variable "pks_lb_count" {
+  type    = "string"
+  default = 1
+}
+
