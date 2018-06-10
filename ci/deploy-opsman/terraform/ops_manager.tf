@@ -1,17 +1,3 @@
-resource "google_compute_image" "ops-manager-image" {
-  name = "${var.env_prefix}-opsman-pcf-gcp"
-  timeouts {
-    create = "20m"
-  }
-  raw_disk {
-    source = "${var.pcf_opsman_image_name}"
-  }
-}
-
-resource "google_compute_address" "ops-manager-public-ip" {
-  name = "${var.env_prefix}-om-public-ip"
-}
-
 resource "google_compute_instance" "ops-manager" {
   name = "${var.env_prefix}-ops-manager"
   machine_type = "${var.opsman_machine_type}"
