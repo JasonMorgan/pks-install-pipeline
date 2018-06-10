@@ -64,7 +64,7 @@ jobs:
       OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
       OPSMAN_USERNAME: {{opsman_admin_username}}
       OPSMAN_PASSWORD: {{opsman_admin_password}}
-      OPSMAN_ZONE: {{gcp_zone_1}}
+      OPSMAN_ZONE: {{az_1_name}}
 
 - name: upload-opsman-image
   plan:
@@ -112,9 +112,9 @@ jobs:
       GCP_PROJECT_ID: {{gcp_project_id}}
       GCP_REGION: {{gcp_region}}
       GCP_SERVICE_ACCOUNT_KEY: {{gcp_service_account_key}}
-      GCP_ZONE_1: {{gcp_zone_1}}
-      GCP_ZONE_2: {{gcp_zone_2}}
-      GCP_ZONE_3: {{gcp_zone_3}}
+      GCP_ZONE_1: {{az_1_name}}
+      GCP_ZONE_2: {{az_2_name}}
+      GCP_ZONE_3: {{az_3_name}}
       GCP_RESOURCE_PREFIX: {{gcp_resource_prefix}}
       GCP_STORAGE_BUCKET_LOCATION: {{gcp_storage_bucket_location}}
       PCF_ERT_DOMAIN: {{pcf_ert_domain}}
@@ -178,9 +178,9 @@ jobs:
       OPS_MGR_TRUSTED_CERTS: {{opsman_trusted_certs}}
       GCP_PROJECT_ID: {{gcp_project_id}}
       GCP_REGION: {{gcp_region}}
-      GCP_ZONE_1: {{gcp_zone_1}}
-      GCP_ZONE_2: {{gcp_zone_2}}
-      GCP_ZONE_3: {{gcp_zone_3}}
+      GCP_ZONE_1: {{az_1_name}}
+      GCP_ZONE_2: {{az_2_name}}
+      GCP_ZONE_3: {{az_3_name}}
       GCP_RESOURCE_PREFIX: {{gcp_resource_prefix}}
       GCP_SERVICE_ACCOUNT_KEY: {{gcp_service_account_key}}
 

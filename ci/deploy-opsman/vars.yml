@@ -1,0 +1,59 @@
+
+# Errands to disable prior to deploying ERT
+# Valid values:
+#   all
+#   none
+#   "" (empty string - equivalent to none)
+#   Any combination of the following, separated by comma:
+#     bootstrap
+#     deploy-autoscaler
+#     deploy-notifications
+#     deploy-notifications-ui
+#     nfsbrokerpush
+#     push-apps-manager
+#     push-pivotal-account
+#     push-usage-service
+#     rejoin-unsafe
+#     send-email
+#     smoke_tests
+#     test-autoscaling
+ert_errands_to_disable: none
+
+# GCP project to create the infrastructure in
+gcp_project_id: CHANGEME
+
+# GCP region
+gcp_region: us-east1
+
+# Identifier to prepend to GCP infrastructure names/labels; this should be globally unique
+gcp_resource_prefix: CHANGEME
+
+# GCP credentials JSON. The service account must have the Editor role.
+gcp_service_account_key: ((gcp-bosh-key))
+
+# GCP Interopable storage access key: https://console.cloud.google.com/storage/settings
+gcp_storage_access_key: ((gcp-storage-key.access_key))
+gcp_storage_secret_key: ((gcp-storage-key.secret))
+
+# Storage Location
+gcp_storage_bucket_location: US
+
+
+# Optional - if your git repo requires an SSH key.
+git_private_key:
+
+# Operations Manager credentials to set
+# opsman_admin_username/opsman_admin_password needs to be specified
+opsman_admin_username: admin
+opsman_admin_password: ((opsman))
+
+# # The domain to access Operations Manager; 
+opsman_domain_or_ip_address: opsmgr.gcp.59s.io #This must be your pcf_ert_domain with "opsman." as a prefix. For example, opsman.pcf.example.com
+
+# PCF Ops Manager minor version to track
+opsman_major_minor_version: ^2\.1\.[0-9]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
+
+# Optional PEM-encoded certificates to add to BOSH director
+opsman_trusted_certs: |
+
+terraform_statefile_bucket: jason-pcf-pipelines-terraform-state-bucket
