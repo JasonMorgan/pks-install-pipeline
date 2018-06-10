@@ -16,16 +16,14 @@ resources:
 - name: pcf-pipelines
   type: git
   source:
-    uri: git@github.com:pivotal-cf/pcf-pipelines.git
+    uri: https://github.com/pivotal-cf/pcf-pipelines.git
     branch: master
-    private_key: {{git_private_key}}
   
 - name: pks-install-pipeline
   type: git
   source:
     uri: https://github.com/JasonMorgan/pks-install-pipeline.git
     branch: master
-    private_key: {{git_private_key}}
 
 - name: terraform-state
   type: gcs
@@ -40,14 +38,6 @@ resources:
     api_token: {{pivnet_token}}
     product_slug: ops-manager
     product_version: {{opsman_major_minor_version}}
-    sort_by: semver
-
-- name: pivnet-elastic-runtime
-  type: pivnet
-  source:
-    api_token: {{pivnet_token}}
-    product_slug: elastic-runtime
-    product_version: {{ert_major_minor_version}}
     sort_by: semver
 
 jobs:
@@ -77,7 +67,7 @@ jobs:
   plan:
   - get: pcf-pipelines
   - get: pivnet-opsmgr
-    trigger: true
+    # trigger: true
     params:
       globs:
       - "*GCP.yml"
@@ -115,7 +105,7 @@ jobs:
         globs:
         - "*GCP.yml"
   - task: create-infrastructure
-    file: pcf-pipelines/install-pcf/gcp/tasks/create-infrastructure/task.yml
+    file: pks-install-pipeline/ci/deploy-opsman/tasks/create-infrastructure/task.yml
     params:
       GCP_PROJECT_ID: {{gcp_project_id}}
       GCP_REGION: {{gcp_region}}

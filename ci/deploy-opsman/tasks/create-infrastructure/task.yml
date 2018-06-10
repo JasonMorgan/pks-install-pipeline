@@ -28,4 +28,4 @@ params:
   GCP_DOMAIN: 
 
 run:
-  path: pcf-pipelines/install-pcf/gcp/tasks/create-infrastructure/task.sh
+  path: pks-install-pipeline/ci/deploy-opsman/tasks/create-infrastructure/task.sh

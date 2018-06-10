@@ -61,4 +61,4 @@ terraform_statefile_bucket: jason-pcf-pipelines-terraform-state-bucket
 # 
 
 gcp_zone_name: gcp-59s-io
-gpc_domain: gcp.59s.io
+gcp_domain: gcp.59s.io
