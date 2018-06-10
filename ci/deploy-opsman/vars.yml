@@ -20,13 +20,13 @@
 ert_errands_to_disable: none
 
 # GCP project to create the infrastructure in
-gcp_project_id: CHANGEME
+gcp_project_id: fe-jmorgan
 
 # GCP region
 gcp_region: us-east1
 
 # Identifier to prepend to GCP infrastructure names/labels; this should be globally unique
-gcp_resource_prefix: CHANGEME
+gcp_resource_prefix: ephermeral-pks
 
 # GCP credentials JSON. The service account must have the Editor role.
 gcp_service_account_key: ((gcp-bosh-key))
