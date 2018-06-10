@@ -150,13 +150,14 @@ properties: |
   ### if GCP is to be selected, then uncomment and fill out the GCP parameters below.
   ### otherwise, leave this section commented out to avoid Ops Manager parameter settings errors
   .properties.cloud_provider.gcp.project_id:
-    value: ((gcp_project_id))
+    value: fe-jmorgan
   .properties.cloud_provider.gcp.network:
-    value: ((gcp_vpc_network))  # Specify the VPC network name that will be used by the Kubernetes Cloud Provider
+    # So this is a good point, I won't know this programatically until the network get's created
+    value: ADDSomethingValidHere  # Specify the VPC network name that will be used by the Kubernetes Cloud Provider
   .properties.cloud_provider.gcp.master_service_account_key:
-    value: ((gcp_service_key))
+    value: ((pks-master-service-json))
   .properties.cloud_provider.gcp.worker_service_account_key:
-    value: ((gcp_service_key))
+    value: ((pks-worker-service-json))
 
   ### if VSPHERE is to be selected, then uncomment and fill out the VSPHERE parameters below
   ### otherwise, leave this section commented out to avoid Ops Manager parameter settings errors
@@ -208,7 +209,7 @@ properties: |
 
   ######## UAA configuration page
   .properties.uaa_url:
-    value: ((pcf_pks_api_domain))
+    value: pks.gcp.59s.io
   .properties.uaa_pks_cli_access_token_lifetime:
     value: 86400
   .properties.uaa_pks_cli_refresh_token_lifetime:
