@@ -27,7 +27,7 @@ terraform plan \
   -var "zone_name=${GCP_ZONE_NAME}"
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate \
-  pcf-pipelines/install-pcf/gcp/terraform
+  pks-install-pipeline/ci/deploy-opsman/terraform
 
 # -var "service_account_key=${GCP_SERVICE_ACCOUNT_KEY}" \
 
