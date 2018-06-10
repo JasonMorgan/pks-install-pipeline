@@ -1,0 +1,5 @@
+######## Generic global parameters
+######## typically apply to all foundations and all tiles
+
+# Pivotal Network token for tile release download and pcf-pipelines download
+pivnet_token: ((pivnet)) # In this case i'm using the ((whatever)) syntax to indicate a value I'm storing in credhub. When you use this it's worth just hardcoding your value as you get started. 
