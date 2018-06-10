@@ -38,7 +38,7 @@ terraform apply \
 
 cd $root/create-infrastructure-output
   output_json=$(terraform output -json -state=terraform.tfstate)
-  output=$(echo $output_json | jq)
+  output=$(echo $output_json)
 cd -
 
 echo "$output"
