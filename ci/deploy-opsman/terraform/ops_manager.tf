@@ -20,3 +20,7 @@ resource "google_compute_instance" "ops-manager" {
     }
   }
 }
+
+resource "google_compute_address" "ops-manager-public-ip" {
+  name = "${var.env_prefix}-om-public-ip"
+}
