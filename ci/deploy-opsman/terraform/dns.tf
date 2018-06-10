@@ -1,5 +1,5 @@
 resource "google_dns_record_set" "ops-manager-dns" {
-  name = "opsmgr"
+  name = "opsmgr.${var.domain}"
   type = "A"
   ttl  = 300
 
