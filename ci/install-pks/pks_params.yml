@@ -153,7 +153,7 @@ properties: |
     value: fe-jmorgan
   .properties.cloud_provider.gcp.network:
     # So this is a good point, I won't know this programatically until the network get's created
-    value: ADDSomethingValidHere  # Specify the VPC network name that will be used by the Kubernetes Cloud Provider
+    value: ephemeral-pks-virt-net/ephemeral-pks-subnet-infrastructure-us-east1/us-east1  # Specify the VPC network name that will be used by the Kubernetes Cloud Provider
   .properties.cloud_provider.gcp.master_service_account_key:
     value: ((pks-master-service-json))
   .properties.cloud_provider.gcp.worker_service_account_key:
