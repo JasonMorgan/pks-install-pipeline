@@ -46,7 +46,7 @@ variable "services_cidr" {
   default     = "192.168.20.0/22"
 }
 
-variable "opsman_image_url" {
+variable "pcf_opsman_image_name" {
   type = "string"
 }
 
