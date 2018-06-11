@@ -11,7 +11,7 @@ inputs:
 
 run:
   path: /bin/bash
-  args: ["pks-install-pipeline/ci/deploy-opsman/configure-tile/task.sh"]
+  args: ["pks-install-pipeline/ci/install-pks/configure-tile/task.sh"]
 
 params:
   OPSMAN_DOMAIN_OR_IP_ADDRESS:
