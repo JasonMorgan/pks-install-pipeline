@@ -36,6 +36,10 @@ main() {
   cat ./resources_object.json
   # PROPERTIES
   echo "$TILE_PROPERTIES" > ./properties_object.yml
+  
+
+  echo "-----------------------------------------------------------------"
+  echo "$TILE_PROPERTIES"
   # convert properties YML into JSON
   python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < ./properties_object.yml > ./properties_object.json
 
