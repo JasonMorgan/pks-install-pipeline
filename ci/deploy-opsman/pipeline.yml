@@ -123,6 +123,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines
+    - get: pks-install-pipeline
     - get: pivnet-opsmgr
       passed: [create-infrastructure]
       params: {globs: []}
@@ -139,7 +140,7 @@ jobs:
       OPS_MGR_PWD: {{opsman_admin_password}}
       OM_DECRYPTION_PWD: {{opsman_admin_password}}
   - task: configure-director
-    file: pcf-pipelines/install-pcf/gcp/tasks/config-director/task.yml
+    file: pks-install-pipeline/ci/deploy-opsman/tasks/config-director/task.yml
     params:
       OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
       OPS_MGR_USR: {{opsman_admin_username}}
