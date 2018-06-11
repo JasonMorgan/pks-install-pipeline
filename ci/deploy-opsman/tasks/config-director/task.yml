@@ -8,6 +8,7 @@ image_resource:
 
 inputs:
 - name: pcf-pipelines
+- name: pks-install-pipeline
 
 params:
   OPSMAN_DOMAIN_OR_IP_ADDRESS:
