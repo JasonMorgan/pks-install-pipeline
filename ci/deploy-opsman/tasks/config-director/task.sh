@@ -134,7 +134,7 @@ security_configuration=$(
 network_assignment=$(
   jq -n \
     --arg availability_zones "$availability_zones" \
-    --arg network "infrastructure" \
+    --arg network "pks-infrastructure" \
     '
     {
       "singleton_availability_zone": {
