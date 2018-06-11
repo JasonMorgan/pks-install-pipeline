@@ -9,10 +9,6 @@ main() {
   python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < ./network_object.yml > ./network_object.json
   export network_object=$(cat network_object.json)
 
-  echo "About to run network"
-  echo "-----------------------------------------------------------------"
-  cat ./network_object.json
-
   # update Ops Mgr tile with network information
   om-linux \
     --target https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
@@ -32,25 +28,14 @@ main() {
   python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < ./resources_object.yml > ./resources_object.json
   export resources_object=$(cat resources_object.json)
 
-  echo "-----------------------------------------------------------------"
-  cat ./resources_object.json
   # PROPERTIES
   echo "$TILE_PROPERTIES" > ./properties_object.yml
-  
-
-  echo "-----------------------------------------------------------------"
-  echo "$TILE_PROPERTIES"
   # convert properties YML into JSON
   python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < ./properties_object.yml > ./properties_object.json
-
-  echo "-----------------------------------------------------------------"
-  cat ./properties_object.json
 
   # make a copy of the original properties file for updates
   cp properties_object.json updated_properties_object.json
 
-  echo "-----------------------------------------------------------------"
-  cat updated_properties_object.json
   # process any certificate generation by introspecting into properties files
   process_certificates
 
