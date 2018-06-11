@@ -34,7 +34,7 @@ network_configuration=$(
     --arg infra_dns "192.168.101.1,8.8.8.8" \
     --arg infra_gateway "192.168.101.1" \
     --arg infra_availability_zones "$availability_zones" \
-     --arg services_network_name "pks-main" \
+    --arg services_network_name "pks-main" \
     --arg services_vcenter_network "${GCP_RESOURCE_PREFIX}-virt-net/${GCP_RESOURCE_PREFIX}-subnet-pks-main-${GCP_REGION}/${GCP_REGION}" \
     --arg services_network_cidr "192.168.20.0/22" \
     --arg services_reserved_ip_ranges "192.168.20.1-192.168.20.9" \
@@ -63,20 +63,6 @@ network_configuration=$(
               "dns": $infra_dns,
               "gateway": $infra_gateway,
               "availability_zone_names": ($infra_availability_zones | split(","))
-            }
-          ]
-        },
-        {
-          "name": $deployment_network_name,
-          "service_network": false,
-          "subnets": [
-            {
-              "iaas_identifier": $deployment_vcenter_network,
-              "cidr": $deployment_network_cidr,
-              "reserved_ip_ranges": $deployment_reserved_ip_ranges,
-              "dns": $deployment_dns,
-              "gateway": $deployment_gateway,
-              "availability_zone_names": ($deployment_availability_zones | split(","))
             }
           ]
         },
