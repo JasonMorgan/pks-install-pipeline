@@ -152,7 +152,7 @@ jobs:
       params:
         globs: []
   - task: configure-tile
-    file: pks-install-pipeline/ci/install-pks/tasks/configure-tile/task.yml
+    file: pks-install-pipeline/ci/install-pks/configure-tile/task.yml
     params:
       OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain}}
       OPSMAN_USERNAME: {{opsman_admin_username}}
