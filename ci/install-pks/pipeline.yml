@@ -26,6 +26,12 @@ resources:
     product_version: {{product_version}}
     sort_by: semver
 
+- name: pks-install-pipeline
+  type: git
+  source:
+    uri: https://github.com/JasonMorgan/pks-install-pipeline.git
+    branch: master
+
 resource_types:
 - name: pivnet
   type: docker-image
@@ -137,6 +143,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines-utils
+    - get: pks-install-pipeline
     - get: pivnet-product
       passed:
       - update-director-config
@@ -145,7 +152,7 @@ jobs:
       params:
         globs: []
   - task: configure-tile
-    file: pcf-pipelines-utils/tasks/pcf/configure-tile/task.yml
+    file: pks-install-pipeline/ci/deploy-opsman/tasks/configure-tile/task.yml
     params:
       OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain}}
       OPSMAN_USERNAME: {{opsman_admin_username}}

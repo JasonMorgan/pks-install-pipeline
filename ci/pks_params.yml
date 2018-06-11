@@ -21,13 +21,13 @@ networks: |
   network:
     name: pks-infrastructure
   other_availability_zones:
-  - name: us-east-1d
-  - name: us-east-1b
-  - name: us-east-1c
+  - name: us-east1-d
+  - name: us-east1-b
+  - name: us-east1-c
   service_network:
     name: pks-services
   singleton_availability_zone:
-    name: us-east-1d
+    name: us-east1-d
 
 
 properties: |
@@ -60,7 +60,7 @@ properties: |
   .properties.plan1_selector.active.description:
     value: "Small plan"
   .properties.plan1_selector.active.az_placement:
-    value: us-east-1b  # Specify the AZ in which the cluster will be created
+    value: us-east1-b  # Specify the AZ in which the cluster will be created
   .properties.plan1_selector.active.authorization_mode:
     value: rbac    # rbac or abac - Default Cluster Authorization Mode
   .properties.plan1_selector.active.master_vm_type:
