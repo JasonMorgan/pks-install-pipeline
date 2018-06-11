@@ -147,6 +147,8 @@ network_assignment=$(
 )
 
 echo "Configuring IaaS and Director..."
+echo "----------------------------------------------------------------------"
+echo "$network_configuration"
 om-linux \
   --target https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
   --skip-ssl-validation \
