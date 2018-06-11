@@ -23,4 +23,4 @@ params:
   GCP_SERVICE_ACCOUNT_KEY:
 
 run:
-  path: pcf-pipelines/install-pcf/gcp/tasks/config-director/task.sh
+  path: pks-install-pipeline/ci/deploy-opsman/tasks/config-director/task.sh
